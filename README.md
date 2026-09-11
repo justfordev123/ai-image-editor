@@ -1,6 +1,6 @@
 # Image Studio
 
-**[Open the live demo](https://ai-image-editor-silk.vercel.app/)** — Vercel sign-in or a reviewer link is required.
+**[Open the live demo](https://ai-image-editor-silk.vercel.app/)** — No sign-in required.
 
 An image editor built with Angular, Angular Material, and TUI Image Editor **3.15.0**. Start with a sample or your own image, edit it by hand, or ask Azure **GPT Image 2** to make a change.
 
@@ -99,7 +99,7 @@ npm run check
 npx vercel deploy --prod
 ```
 
-Keep deployment protection enabled: this demo has no app-level accounts or usage limiter. Reviewer links are shared separately; the current link expires **September 18, 2026**.
+The production demo is public. Preview and generated deployment URLs stay protected by Vercel. AI requests use the configured Azure resource.
 
 ## Screenshots
 

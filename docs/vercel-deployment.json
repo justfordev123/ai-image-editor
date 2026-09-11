@@ -134,6 +134,32 @@
         "favoritesRestored": true,
         "activeImageDeletionReturnsToStart": true
       }
+    },
+    {
+      "verifiedAt": "2026-09-11T03:15:46.222Z",
+      "kind": "access-configuration",
+      "change": "Made the production demo public without login or a reviewer link; preview and generated deployment URLs retain Vercel Authentication.",
+      "validation": {
+        "verifiedAt": "2026-09-11T03:15:46.222Z",
+        "productionUrl": "https://ai-image-editor-silk.vercel.app/",
+        "unauthenticatedPageStatus": 200,
+        "loginRequired": false,
+        "reviewerLinkRequired": false,
+        "freshBrowserSampleLoad": "passed",
+        "unauthenticatedApiValidationStatus": 400
+      }
     }
-  ]
+  ],
+  "currentAccess": {
+    "verifiedAt": "2026-09-11T03:15:46.222Z",
+    "productionUrl": "https://ai-image-editor-silk.vercel.app/",
+    "unauthenticatedPageStatus": 200,
+    "loginRequired": false,
+    "reviewerLinkRequired": false,
+    "freshBrowserSampleLoad": "passed",
+    "unauthenticatedApiValidationStatus": 400,
+    "ssoProtection": {
+      "deploymentType": "prod_deployment_urls_and_all_previews"
+    }
+  }
 }

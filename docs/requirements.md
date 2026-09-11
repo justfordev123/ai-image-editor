@@ -38,7 +38,7 @@ The revised AI sidebar edits the current image with only a prompt textarea and a
 | README setup/config/features/decisions/challenges         | Root README                                                                                                           | Complete                                                           |
 | Screenshots with AI-generated content                     | Live Azure result and application screenshots                                                                         | See docs/screenshots/live-azure-create.png and live-azure-edit.png |
 | GitHub repository                                         | [justfordev123/ai-image-editor](https://github.com/justfordev123/ai-image-editor)                                     | Public source repository                                           |
-| Live deployed demo                                        | [Vercel demo](https://ai-image-editor-silk.vercel.app/); protected reviewer access                                    | Deployed; real Azure creation/editing verified on September 11     |
+| Live deployed demo                                        | [Vercel demo](https://ai-image-editor-silk.vercel.app/); public access, no sign-in required                           | Deployed; real Azure creation/editing verified on September 11     |
 
 ## Reviewer walkthrough
 
