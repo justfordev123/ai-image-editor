@@ -1,0 +1,215 @@
+@use '@angular/material' as mat;
+
+@font-face {
+  font-family: 'strokeWeight(var)';
+  src: url('/fonts/strokeWeightvar.ttf') format('truetype');
+  font-weight: 20 180;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Eina03-Regular';
+  src: url('/fonts/Eina03-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --primary-grey: #efefee;
+  --secondary-grey: #bebebe;
+  --background: #f0f0f0;
+  --white: #ffffff;
+  --black: #000000;
+  --button-border-color: var(--black);
+  --brand-font: 'strokeWeight(var)', 'Eina03-Regular', Arial, sans-serif;
+  --weight-normal: 60;
+  --weight-medium: 80;
+  --weight-semibold: 120;
+  --slant-normal: 0;
+  --slant-hover: 12;
+  --radius-button: 50px;
+  --radius-input: 0px;
+  --radius-card: 1rem;
+  font-family: var(--brand-font);
+  color: var(--black);
+  background: var(--background);
+  font-variation-settings:
+    'wght' var(--weight-normal),
+    'slnt' var(--slant-normal);
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: (
+        plain-family: var(--brand-font),
+        brand-family: var(--brand-font),
+      ),
+      density: 0,
+    )
+  );
+  @include mat.theme-overrides(
+    (
+      primary: var(--black),
+      on-primary: var(--white),
+      primary-container: var(--primary-grey),
+      on-primary-container: var(--black),
+      secondary: var(--black),
+      on-secondary: var(--white),
+      secondary-container: var(--primary-grey),
+      on-secondary-container: var(--black),
+      tertiary: var(--black),
+      on-tertiary: var(--white),
+      tertiary-container: var(--primary-grey),
+      on-tertiary-container: var(--black),
+      background: var(--background),
+      on-background: var(--black),
+      surface: var(--white),
+      surface-bright: var(--white),
+      surface-dim: var(--secondary-grey),
+      surface-container-lowest: var(--white),
+      surface-container-low: var(--white),
+      surface-container: var(--primary-grey),
+      surface-container-high: var(--primary-grey),
+      surface-container-highest: var(--secondary-grey),
+      surface-variant: var(--primary-grey),
+      on-surface: var(--black),
+      on-surface-variant: var(--black),
+      outline: var(--secondary-grey),
+      outline-variant: var(--secondary-grey),
+      inverse-surface: var(--black),
+      inverse-on-surface: var(--white),
+      inverse-primary: var(--white),
+      surface-tint: var(--black),
+      error: var(--black),
+      on-error: var(--white),
+      error-container: var(--primary-grey),
+      on-error-container: var(--black),
+    )
+  );
+  @include mat.button-overrides(
+    (
+      filled-container-shape: var(--radius-button),
+      outlined-container-shape: var(--radius-button),
+      text-container-shape: var(--radius-button),
+      filled-container-height: 40px,
+      outlined-container-height: 40px,
+      text-container-height: 40px,
+      filled-label-text-font: var(--brand-font),
+      outlined-label-text-font: var(--brand-font),
+      text-label-text-font: var(--brand-font),
+      outlined-outline-color: var(--button-border-color),
+      outlined-disabled-outline-color: var(--button-border-color),
+    )
+  );
+  @include mat.form-field-overrides(
+    (
+      // Material also uses this length in padding calculations, so retain the unit.
+      outlined-container-shape: var(--radius-input),
+      container-height: 50px,
+      container-vertical-padding: 13px,
+      container-text-font: var(--brand-font),
+      outlined-label-text-font: var(--brand-font)
+    )
+  );
+  @include mat.dialog-overrides(
+    (
+      container-shape: var(--radius-card),
+      container-color: var(--white),
+    )
+  );
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  font-size: 16px;
+}
+button,
+input,
+textarea,
+select {
+  font-family: var(--brand-font);
+  font-variation-settings:
+    'wght' var(--weight-normal),
+    'slnt' var(--slant-normal);
+}
+button {
+  min-height: 35px;
+}
+button,
+button.mat-mdc-button-base {
+  transition: all 0.2s;
+}
+button:enabled:hover {
+  font-variation-settings:
+    'wght' var(--weight-normal),
+    'slnt' var(--slant-hover);
+}
+button:is([mat-stroked-button], [mat-button], [mat-icon-button]):enabled:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+button[mat-flat-button] {
+  border: 1px solid var(--button-border-color);
+}
+button[mat-flat-button]:enabled:hover {
+  color: var(--black);
+  background-color: var(--white);
+}
+button:disabled {
+  cursor: not-allowed;
+}
+input,
+textarea,
+select {
+  border-radius: var(--radius-input);
+}
+h1,
+h2 {
+  font-variation-settings:
+    'wght' var(--weight-medium),
+    'slnt' var(--slant-normal);
+}
+.wordmark {
+  font-variation-settings:
+    'wght' var(--weight-semibold),
+    'slnt' var(--slant-normal);
+}
+button app-icon {
+  vertical-align: middle;
+}
+:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 4px;
+}
+button.mat-mdc-button-base {
+  border-color: var(--button-border-color);
+  letter-spacing: 0 !important;
+}
+.mat-mdc-option {
+  font-family: var(--brand-font) !important;
+  font-size: 14px !important;
+}
+.properties-dialog .mat-mdc-dialog-surface {
+  padding: 24px;
+}
+.tui-image-editor-canvas-container {
+  margin: 0 !important;
+}
+.canvas-host canvas {
+  display: block;
+}
+.canvas-host {
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--black) 6.25%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation-duration: 0.01ms !important;
+  }
+}

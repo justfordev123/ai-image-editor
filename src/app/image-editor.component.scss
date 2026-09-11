@@ -1,0 +1,323 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+.app-header {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--secondary-grey);
+  background: var(--white);
+}
+.wordmark {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -1.8px;
+  white-space: nowrap;
+}
+.header-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+.header-actions button:first-child span {
+  display: none;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 16px;
+  gap: 16px;
+}
+app-toolbar {
+  grid-row: 1;
+}
+.work-area {
+  min-width: 0;
+}
+.canvas-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 20px;
+}
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  color: var(--black);
+}
+.canvas-heading h1 {
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: -0.7px;
+  margin: 7px 0 0;
+}
+.undo-redo {
+  display: flex;
+  gap: 2px;
+}
+.canvas-stage {
+  height: 390px;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--primary-grey);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.canvas-host {
+  max-width: 100%;
+  max-height: 100%;
+}
+.canvas-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--black);
+  font-size: 12px;
+  margin-top: 14px;
+}
+.crop-actions {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 12px;
+  padding: 8px;
+  border-radius: var(--radius-button);
+  background: var(--white);
+}
+.canvas-error {
+  font-size: 14px;
+  padding: 12px;
+  border: 1px solid var(--secondary-grey);
+}
+.canvas-status {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.properties {
+  background: var(--white);
+  padding: 28px 24px;
+  border-left: 1px solid var(--secondary-grey);
+  min-width: 0;
+}
+.history {
+  margin-top: 30px;
+}
+.history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+.history h2 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+.history h2 span {
+  margin-left: 8px;
+  color: var(--black);
+  font-size: 12px;
+}
+.history-heading button {
+  font-size: 13px;
+}
+.history-heading app-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+.history-items {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.image-card {
+  width: 180px;
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  background: var(--white);
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  text-align: left;
+  padding: 0;
+  color: var(--black);
+}
+.image-card img {
+  width: 100%;
+  height: 95px;
+  object-fit: cover;
+  display: block;
+}
+.thumbnail {
+  display: block;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.image-meta {
+  @include mat.icon-button-overrides(
+    (
+      state-layer-size: 36px,
+      icon-size: 16px,
+      touch-target-size: 36px,
+    )
+  );
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 52px;
+  font-size: 12px;
+  padding: 8px;
+}
+.image-meta > span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.image-meta button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.image-meta app-icon {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+}
+.image-meta button[aria-pressed='true']:not(:hover) {
+  background: var(--secondary-grey);
+}
+.history-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 170px;
+  padding: 12px;
+  border: 1px dashed var(--secondary-grey);
+  border-radius: var(--radius-card);
+  color: var(--black);
+}
+.history-empty p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.history-empty p span {
+  display: block;
+  font-size: 12px;
+}
+.history-note {
+  font-size: 12px;
+  color: var(--black);
+  margin-top: 10px;
+}
+@media (min-width: 640px) {
+  .app-header {
+    padding: 0 24px;
+  }
+  .wordmark {
+    font-size: 28px;
+  }
+  .header-actions button:first-child span {
+    display: inline;
+  }
+  .canvas-stage {
+    height: 470px;
+  }
+  .workspace {
+    padding: 24px;
+  }
+}
+@media (min-width: 768px) {
+  .workspace {
+    gap: 24px;
+  }
+  .workspace.has-image {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+  app-toolbar {
+    padding-top: 2px;
+  }
+  .canvas-stage {
+    height: 520px;
+  }
+}
+@media (min-width: 1024px) {
+  .app-header {
+    height: 88px;
+    padding: 0 32px;
+  }
+  .workspace {
+    padding: 0 24px 0 20px;
+    gap: 24px;
+  }
+  app-toolbar {
+    padding-top: 28px;
+  }
+  .work-area {
+    padding: 26px 0 20px;
+  }
+  .canvas-stage {
+    height: clamp(370px, calc(100dvh - 370px), 690px);
+  }
+  .properties {
+    min-height: calc(100dvh - 88px);
+    padding: 28px 20px;
+  }
+  .workspace.panel-open {
+    grid-template-columns: 64px minmax(0, 1fr) 328px;
+    padding-right: 0;
+  }
+  .canvas-heading {
+    padding-top: 0;
+  }
+  .history {
+    margin-top: 28px;
+  }
+}
+@media (min-width: 1280px) {
+  .workspace {
+    gap: 32px;
+    padding-left: 24px;
+  }
+  .workspace.has-image {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+  .workspace.panel-open {
+    grid-template-columns: 72px minmax(0, 1fr) 366px;
+  }
+  .properties {
+    padding: 32px 24px;
+  }
+  .work-area {
+    padding-top: 30px;
+  }
+  .canvas-heading h1 {
+    font-size: 26px;
+  }
+  .canvas-stage {
+    height: clamp(440px, calc(100dvh - 370px), 720px);
+  }
+}

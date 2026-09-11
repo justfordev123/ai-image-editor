@@ -1,0 +1,13 @@
+.env
+.env.*
+.angular/
+node_modules/
+dist/
+tmp/
+docs/
+e2e/
+test-results/
+playwright-report/
+coverage/
+**/*.spec.ts
+**/*.test.ts

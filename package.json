@@ -1,0 +1,51 @@
+{
+  "name": "ai-image-editor",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "concurrently -k \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:web": "ng serve --host 127.0.0.1 --proxy-config proxy.conf.json",
+    "dev:api": "node --env-file-if-exists=.env --import tsx --watch server/index.ts",
+    "build": "ng build",
+    "test": "ng test --watch=false",
+    "test:server": "tsx --test server/generation.test.ts",
+    "test:e2e": "playwright test",
+    "typecheck": "tsc -p tsconfig.server.json",
+    "check": "npm run format:check && npm run typecheck && npm test && npm run test:server && npm run build",
+    "format:check": "prettier --check \"src/**/*.{ts,scss,html}\" \"server/**/*.ts\" \"api/**/*.ts\" \"e2e/**/*.ts\""
+  },
+  "private": true,
+  "packageManager": "npm@10.9.7",
+  "dependencies": {
+    "@angular/cdk": "21.2.14",
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/material": "21.2.14",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "express": "^5.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "tui-image-editor": "3.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.23",
+    "@angular/cli": "^21.2.23",
+    "@angular/compiler-cli": "^21.2.0",
+    "@playwright/test": "^1.55.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@vitest/browser-playwright": "4.1.11",
+    "concurrently": "^9.2.0",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.1",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.2",
+    "vitest": "4.1.11"
+  },
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  }
+}

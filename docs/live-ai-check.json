@@ -1,0 +1,23 @@
+{
+  "prompt": "Change only the background to a pale blue. Keep the white ceramic ribbon sculpture and pedestal unchanged.",
+  "model": "Qwen/Qwen-Image-Edit",
+  "httpStatus": 200,
+  "elapsedSeconds": 50,
+  "statusMessages": [
+    "Request accepted. Editing your image…",
+    "The provider accepted your image. Waiting for the result…",
+    "Waiting for the model · 10s",
+    "Waiting for the model · 20s",
+    "Waiting for the model · 30s",
+    "Waiting for the model · 40s"
+  ],
+  "resultFile": "screenshots/live-qwen-result.png",
+  "bytes": 1110336,
+  "dimensions": {
+    "width": 1024,
+    "height": 1024
+  },
+  "verifiedAt": "2026-09-10T13:11:01.485012+00:00",
+  "screenshot": "screenshots/live-qwen-edit.png",
+  "verification": "One authenticated request through the Angular UI and local API. The 1024x1024 PNG decoded successfully, its background is pale blue, and the returned image appeared in the canvas and history."
+}

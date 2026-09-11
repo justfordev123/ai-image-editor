@@ -1,0 +1,34 @@
+@if (store.state$ | async; as state) {
+  <div class="panel-heading">
+    <h2><app-icon name="spark" /> AI</h2>
+    <button mat-icon-button aria-label="Close AI panel" (click)="close.emit()">
+      <app-icon name="close" />
+    </button>
+  </div>
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Prompt</mat-label>
+    <textarea
+      matInput
+      [disabled]="state.loading"
+      [ngModel]="state.preferences.prompt"
+      (ngModelChange)="store.update({ prompt: $event })"
+      maxlength="2000"
+      placeholder="Describe what you want to change…"
+    ></textarea>
+  </mat-form-field>
+  <button
+    class="generate"
+    mat-flat-button
+    [disabled]="busy() || state.loading || !hasImage() || !state.preferences.prompt.trim()"
+    [attr.aria-busy]="state.loading"
+    (click)="generate.emit()"
+  >
+    {{ state.loading ? 'Editing…' : 'Edit image' }}
+  </button>
+  @if (state.message) {
+    <p class="note" role="status">{{ state.message }}</p>
+  }
+  @if (state.error) {
+    <p class="error" role="alert">{{ state.error }}</p>
+  }
+}

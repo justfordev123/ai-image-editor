@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-10T15:23:37.906Z",
+  "provider": "Azure OpenAI",
+  "deployment": "gpt-image-2",
+  "checks": [
+    {
+      "intent": "create",
+      "httpStatus": 200,
+      "seconds": 76,
+      "success": true,
+      "statusUpdates": 8,
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1072075,
+      "result": "docs/screenshots/live-azure-create-result.png"
+    },
+    {
+      "intent": "edit",
+      "httpStatus": 200,
+      "seconds": 83.6,
+      "success": true,
+      "statusUpdates": 9,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1627338,
+      "result": "docs/screenshots/live-azure-edit-result.png"
+    }
+  ],
+  "historyRestored": true,
+  "requests": 2,
+  "visualInspection": {
+    "creation": "White ceramic vase on a warm grey background.",
+    "editing": "The vase remains, with the background changed to pastel blue."
+  },
+  "automatedChecks": {
+    "angularTests": 8,
+    "serverTests": 12,
+    "browserTests": 15,
+    "typecheck": "passed",
+    "productionBuild": "passed"
+  }
+}

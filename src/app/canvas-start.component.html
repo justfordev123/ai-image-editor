@@ -1,0 +1,73 @@
+@if (store.state$ | async; as state) {
+  <div class="start">
+    @if (!creating()) {
+      <h2>Start with an image</h2>
+      <div class="choices">
+        <button
+          mat-stroked-button
+          [disabled]="!ready() || busy() || state.loading"
+          (click)="sample.emit()"
+        >
+          Use sample image
+        </button>
+        <button
+          mat-stroked-button
+          [disabled]="!ready() || busy() || state.loading"
+          (click)="upload.emit()"
+        >
+          Upload an image
+        </button>
+        <button
+          mat-flat-button
+          [disabled]="!ready() || busy() || state.loading"
+          (click)="creating.set(true)"
+        >
+          Generate with AI
+        </button>
+      </div>
+    } @else {
+      <form (ngSubmit)="generate.emit(prompt())">
+        <mat-form-field appearance="outline">
+          <mat-label>Describe your image</mat-label>
+          <textarea
+            matInput
+            name="prompt"
+            [ngModel]="prompt()"
+            (ngModelChange)="prompt.set($event)"
+            [disabled]="state.loading || busy()"
+            maxlength="2000"
+            rows="3"
+            placeholder="A quiet coastal house in soft morning light…"
+          ></textarea>
+        </mat-form-field>
+        <div class="actions">
+          <button
+            mat-button
+            type="button"
+            [disabled]="busy() || state.loading"
+            (click)="creating.set(false)"
+          >
+            Back to choices
+          </button>
+          <button
+            mat-flat-button
+            type="submit"
+            [disabled]="!ready() || busy() || state.loading || !prompt().trim()"
+            [attr.aria-busy]="state.loading"
+          >
+            {{ state.loading ? 'Creating…' : 'Generate image' }}
+          </button>
+        </div>
+      </form>
+      @if (state.message) {
+        <p class="feedback" role="status">{{ state.message }}</p>
+      }
+      @if (state.error) {
+        <p class="error" role="alert">{{ state.error }}</p>
+      }
+    }
+    @if (busy()) {
+      <p class="feedback" role="status">Opening your image…</p>
+    }
+  </div>
+}

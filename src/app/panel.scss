@@ -1,0 +1,79 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+}
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.6px;
+  font-weight: 500;
+}
+.panel-heading button {
+  @include mat.icon-button-overrides(
+    (
+      icon-size: 20px,
+    )
+  );
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+mat-form-field {
+  display: block;
+  width: 100%;
+}
+textarea {
+  min-height: 114px;
+  line-height: 1.6;
+  resize: vertical;
+}
+.generate {
+  width: 100%;
+  margin-top: 20px;
+}
+.note {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--black);
+}
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  color: var(--black);
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.error {
+  background: var(--primary-grey);
+  padding: 14px;
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.adjustment {
+  margin-bottom: 24px;
+}
+.adjustment label {
+  display: block;
+  margin-bottom: 12px;
+}
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--black);
+}

@@ -1,0 +1,23 @@
+<div class="panel-heading">
+  <h2><app-icon name="adjust" /> Adjust</h2>
+  <button mat-icon-button aria-label="Close Adjust panel" (click)="close.emit()">
+    <app-icon name="close" />
+  </button>
+</div>
+<fieldset [disabled]="disabled()">
+  <p class="eyebrow">Make it your own</p>
+  @for (slider of sliders; track slider.type) {
+    <div class="adjustment">
+      <label [for]="slider.type">{{ slider.label }}</label>
+      <input
+        [id]="slider.type"
+        type="range"
+        [min]="slider.min"
+        [max]="slider.max"
+        step="0.05"
+        [value]="values()[slider.type]"
+        (change)="adjust.emit({ type: slider.type, value: +$any($event.target).value })"
+      />
+    </div>
+  }
+</fieldset>

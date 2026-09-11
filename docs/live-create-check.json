@@ -1,0 +1,13 @@
+{
+  "prompt": "A sculptural white ceramic vase on a stone plinth, soft studio lighting, pale gray background, minimalist product photograph.",
+  "model": "Qwen/Qwen-Image",
+  "httpStatus": 200,
+  "elapsedSeconds": 1,
+  "statusMessages": [
+    "Request accepted. Creating your image\u2026"
+  ],
+  "error": "AI credits are exhausted. Check your Hugging Face billing or quota.",
+  "date": "2026-09-10",
+  "success": false,
+  "note": "One live request through the inline canvas form. The provider returned exhausted credits; no image was generated."
+}

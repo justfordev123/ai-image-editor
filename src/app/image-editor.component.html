@@ -1,0 +1,215 @@
+<header class="app-header">
+  <a class="wordmark" href="/" aria-label="Image Studio home">Image Studio</a>
+  <div class="header-actions">
+    <button
+      mat-stroked-button
+      aria-label="Upload image"
+      (click)="fileInput.click()"
+      [disabled]="!ready() || busy() || generating()"
+    >
+      <app-icon name="upload" /></button
+    ><button
+      mat-flat-button
+      aria-label="Export"
+      [disabled]="!hasImage() || busy()"
+      (click)="download()"
+    >
+      <app-icon name="download" />
+    </button>
+  </div>
+  <input
+    #fileInput
+    type="file"
+    accept="image/png,image/jpeg,image/webp"
+    hidden
+    (change)="upload($event)"
+  />
+</header>
+<main class="workspace" [class.has-image]="hasImage()" [class.panel-open]="activePanel()">
+  @if (hasImage()) {
+    <app-toolbar
+      [active]="activePanel() ?? tool()"
+      [hasImage]="hasImage()"
+      [disabled]="busy() || generating()"
+      (choose)="chooseTool($event)"
+    />
+  }
+  <section class="work-area" aria-label="Image canvas">
+    @if (hasImage()) {
+      <div class="canvas-heading">
+        <div>
+          <span class="eyebrow">YOUR CANVAS</span>
+          <h1>{{ title() }}</h1>
+        </div>
+        <div class="undo-redo">
+          <button
+            mat-icon-button
+            aria-label="Undo"
+            matTooltip="Undo"
+            [disabled]="!canUndo() || busy() || generating()"
+            (click)="undo()"
+          >
+            <app-icon name="undo" /></button
+          ><button
+            mat-icon-button
+            aria-label="Redo"
+            matTooltip="Redo"
+            [disabled]="!canRedo() || busy() || generating()"
+            (click)="redo()"
+          >
+            <app-icon name="redo" />
+          </button>
+        </div>
+      </div>
+    }
+    <div #canvasStage class="canvas-stage" [attr.aria-busy]="busy()">
+      <div
+        #canvasHost
+        class="canvas-host"
+        [hidden]="!hasImage()"
+        [inert]="generating()"
+        role="group"
+        aria-label="Editable image canvas"
+      ></div>
+      @if (!hasImage() && ready()) {
+        <app-canvas-start
+          [ready]="ready()"
+          [busy]="busy()"
+          (sample)="openSample()"
+          (upload)="fileInput.click()"
+          (generate)="createImage($event)"
+        />
+      } @else if (!hasImage()) {
+        <p role="status">Opening the studio…</p>
+      }
+      @if (tool() === 'crop') {
+        <div class="crop-actions">
+          <button mat-flat-button (click)="crop()" [disabled]="busy() || generating()">
+            Apply crop</button
+          ><button mat-stroked-button (click)="chooseTool('select')">Cancel</button>
+        </div>
+      }
+    </div>
+    @if (hasImage()) {
+      <div class="canvas-footer">
+        <span>{{ dimensions() }}</span
+        ><span>{{ isSample() ? 'AI-generated sample' : 'Ready to edit' }}</span
+        ><span>Fit to canvas</span>
+      </div>
+    }
+    @if (error()) {
+      <p class="canvas-error" role="alert">
+        {{ error() }} <button mat-button (click)="error.set('')">Dismiss</button>
+      </p>
+    }
+    @if (store.state$ | async; as state) {
+      @if (hasImage() && activePanel() !== 'ai') {
+        @if (state.message) {
+          <p class="canvas-status" role="status">{{ state.message }}</p>
+        }
+        @if (state.error) {
+          <p class="canvas-error" role="alert">{{ state.error }}</p>
+        }
+      }
+      @if (state.storageWarning) {
+        <p class="history-note" role="status">{{ state.storageWarning }}</p>
+      }
+      @if (hasImage() || state.images.length) {
+        <section class="history" aria-label="Image history">
+          <div class="history-heading">
+            <h2>
+              Your explorations <span>{{ state.images.length }}</span>
+            </h2>
+            <button
+              mat-button
+              [attr.aria-pressed]="onlyFavorites()"
+              (click)="onlyFavorites.set(!onlyFavorites())"
+            >
+              <app-icon name="heart" />{{ onlyFavorites() ? 'Show all' : 'Favorites' }}
+            </button>
+          </div>
+          <div class="history-items">
+            @for (image of state.images; track image.id) {
+              @if (!onlyFavorites() || image.favorite) {
+                <article class="image-card">
+                  <button
+                    class="thumbnail"
+                    [disabled]="!ready() || busy() || generating()"
+                    (click)="openImage(image)"
+                    [attr.aria-label]="'Open image: ' + (image.name || image.prompt)"
+                  >
+                    <img [src]="image.url" [alt]="image.name || image.prompt" />
+                  </button>
+                  <div class="image-meta">
+                    <span [title]="image.name || 'Saved image'">{{
+                      image.name || 'Saved image'
+                    }}</span
+                    ><button
+                      mat-icon-button
+                      [attr.aria-label]="
+                        image.favorite ? 'Remove from favorites' : 'Add to favorites'
+                      "
+                      [attr.aria-pressed]="image.favorite"
+                      (click)="store.toggleFavorite(image.id)"
+                    >
+                      <app-icon name="heart" /></button
+                    ><button
+                      mat-icon-button
+                      aria-label="Delete image from history"
+                      [disabled]="!ready() || busy() || generating()"
+                      (click)="removeImage(image)"
+                    >
+                      <app-icon name="trash" />
+                    </button>
+                  </div>
+                </article>
+              }
+            }
+            @if (!state.images.length || (onlyFavorites() && !hasFavorites(state.images))) {
+              <div class="history-empty">
+                <app-icon name="spark" />
+                <p>
+                  {{
+                    onlyFavorites()
+                      ? 'Your favorites will appear here.'
+                      : 'Room for your next idea.'
+                  }}<span>{{
+                    onlyFavorites()
+                      ? 'Save an image with the heart button.'
+                      : 'Upload or create an image to start your collection.'
+                  }}</span>
+                </p>
+              </div>
+            }
+          </div>
+          <p class="history-note">History and favorites stay on this device.</p>
+        </section>
+      }
+    }
+  </section>
+  @if (desktop() && activePanel()) {
+    <aside
+      class="properties"
+      [attr.aria-label]="activePanel() === 'ai' ? 'AI panel' : 'Adjust panel'"
+    >
+      <ng-container [ngTemplateOutlet]="properties" />
+    </aside>
+  }
+</main>
+<ng-template #properties>
+  @if (activePanel() === 'ai') {
+    <app-ai-panel
+      [hasImage]="hasImage()"
+      [busy]="busy()"
+      (generate)="generate()"
+      (close)="closeProperties()"
+    />
+  } @else if (activePanel() === 'adjust') {
+    <app-properties-panel
+      [disabled]="!hasImage() || busy() || generating()"
+      [values]="adjustments()"
+      (adjust)="adjust($event)"
+      (close)="closeProperties()"
+    />
+  }
+</ng-template>

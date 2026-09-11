@@ -1,0 +1,7 @@
+Original sample generated in one image_gen call on September 10, 2026.
+No reference images, retries, or post-generation editing.
+Actual output: 1254 x 1254 PNG (the prompt requested 1024 x 1024).
+
+Prompt: Create one square high-end monochrome still life photograph of a sculptural white ceramic ribbon form on a white plinth. Pale grey seamless studio background, elegant folded looping matte ceramic ribbon with precise edges, balanced negative space, soft side lighting and a precise dark cast shadow. No text, UI, logo, watermark, or extra objects.
+
+This is a separately generated sample for trying the editor. It is not evidence of a live Hugging Face generation from this application. The application labels it as an AI-generated sample.

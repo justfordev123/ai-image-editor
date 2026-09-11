@@ -1,0 +1,139 @@
+{
+  "verifiedAt": "2026-09-11T01:56:13.380Z",
+  "project": "xinyu9/ai-image-editor",
+  "deploymentId": "dpl_CLBpGLypekz8yf7Rrnknh5BxDhTa",
+  "productionUrl": "https://ai-image-editor-silk.vercel.app",
+  "deploymentUrl": "https://ai-image-editor-8hbulvvsx-xinyu9.vercel.app",
+  "dashboardUrl": "https://vercel.com/xinyu9/ai-image-editor/CLBpGLypekz8yf7Rrnknh5BxDhTa",
+  "nodeVersion": "22.x",
+  "fluidCompute": true,
+  "maxDurationSeconds": 180,
+  "protection": "Vercel Authentication on all deployments",
+  "reviewerLinkExpiresAt": "2026-09-18T01:53:31.000Z",
+  "validation": {
+    "unitAndServerTestsPassed": 20,
+    "browserTestsPassed": 15,
+    "productionBuild": "passed",
+    "frontendApiKeyScan": "absent",
+    "unauthenticatedPageStatus": 302,
+    "authenticatedPageStatus": 200,
+    "apiGetStatus": 405,
+    "creation": {
+      "status": "passed",
+      "via": "deployed API with Vercel CLI authentication",
+      "httpStatus": 200,
+      "durationSeconds": 47.444352,
+      "width": 1024,
+      "height": 1024,
+      "pngBytes": 992503,
+      "visual": "White ceramic vase on light grey background"
+    },
+    "editing": {
+      "status": "passed",
+      "via": "deployed UI accessed with reviewer link without Vercel login",
+      "width": 1254,
+      "height": 1254,
+      "uiMessage": "Image updated.",
+      "historyEntries": 2,
+      "visual": "Ceramic ribbon sculpture preserved with pastel blue background"
+    }
+  },
+  "updates": [
+    {
+      "verifiedAt": "2026-09-11T02:06:39.309Z",
+      "deploymentId": "dpl_8jSYXfhsP1bwqPUYXPmRs24zb61P",
+      "deploymentUrl": "https://ai-image-editor-cd2h5f3cs-xinyu9.vercel.app",
+      "productionUrl": "https://ai-image-editor-silk.vercel.app",
+      "change": "Renamed the header and browser tab to Image Studio; removed the old logo, symbol, divider, and duplicate label.",
+      "validation": {
+        "productionBuild": "passed",
+        "responsiveBrowserTests": 2,
+        "hostedTitle": "Image Studio",
+        "hostedHeader": "Image Studio"
+      },
+      "reviewerLinkScope": "production alias",
+      "reviewerLinkExpiresAt": "2026-09-18T01:53:34.000Z"
+    },
+    {
+      "verifiedAt": "2026-09-11T02:12:49.884Z",
+      "deploymentId": "dpl_9pKutGpjZtpZutf18T8nhsKfJYDs",
+      "deploymentUrl": "https://ai-image-editor-9sxjz0ykd-xinyu9.vercel.app",
+      "productionUrl": "https://ai-image-editor-silk.vercel.app",
+      "change": "Removed the separate hover font and hover typography changes; buttons retain the normal font family, weight, and slant.",
+      "validation": {
+        "productionBuild": "passed",
+        "hostedStylesheet": "styles-QTVEIW2C.css",
+        "hoverTypographyOverrides": false,
+        "removedFontAbsentFromBuild": true,
+        "browserVisualCheck": "unavailable because the Mac was locked"
+      }
+    },
+    {
+      "verifiedAt": "2026-09-11T02:25:54.150Z",
+      "deploymentId": "dpl_EfDPJCgyPCAcbAdEU8sogmmD5SPS",
+      "deploymentUrl": "https://ai-image-editor-p9lq5czr9-xinyu9.vercel.app",
+      "productionUrl": "https://ai-image-editor-silk.vercel.app",
+      "change": "Aligned authored UI colors and Material theme colors with the supplied palette, made supporting text black, set card corners to 1rem, and restored hover slant 12 using the same variable font at weight 60.",
+      "validation": {
+        "productionBuild": "passed",
+        "browserTestsPassed": 15,
+        "localDesktopAndMobileScreenshots": "reviewed",
+        "localHoverComputedStyles": "same font family and weight 60; slant changes from 0 to 12; 50px radius and 1px black border preserved",
+        "hostedStylesheet": "styles-XL4Z5UR7.css",
+        "hostedMainBundle": "main-ZNC62BH7.js",
+        "hostedAssetsMatchLocalBuild": true,
+        "removedStaticFontAbsent": true
+      }
+    },
+    {
+      "verifiedAt": "2026-09-11T02:33:52.412Z",
+      "deploymentId": "dpl_DQcztWmtnfdHKQoibywZ9g3iEdr7",
+      "deploymentUrl": "https://ai-image-editor-ch9orrvge-xinyu9.vercel.app",
+      "productionUrl": "https://ai-image-editor-silk.vercel.app",
+      "change": "Hide the editing toolbar, canvas title, and undo/redo controls until an image is loaded; remove the synthetic sample shortcut from explorations so deleted samples stay absent.",
+      "validation": {
+        "productionBuild": "passed",
+        "browserTestsPassed": 16,
+        "regressionsReproducedBeforeFix": true,
+        "localEmptyDesktopAndMobileScreenshots": "reviewed",
+        "verifiedAt": "2026-09-11T02:33:52.412Z",
+        "hostedMainBundle": "main-TKLU2MZ6.js",
+        "hostedBundleMatchesLocalBuild": true,
+        "emptyToolbarAndTitleHidden": true,
+        "controlsAppearAfterLoading": true,
+        "sampleDeletionPersistsAfterRefresh": true,
+        "remainingExplorations": 1
+      }
+    },
+    {
+      "verifiedAt": "2026-09-11T02:47:25.701Z",
+      "deploymentId": "dpl_3qzdWenqQUWY85QF6TeZSpLKb7k8",
+      "deploymentUrl": "https://ai-image-editor-26itfzzb4-xinyu9.vercel.app",
+      "productionUrl": "https://ai-image-editor-silk.vercel.app",
+      "change": "Success-indicator review: synchronize canvas and saved selection on deletion and failed loads, preserve AI feedback with a closed panel, expose storage warnings on empty states, validate stream events, bound browser request time, and improve user-facing service errors.",
+      "validation": {
+        "sourceFormatting": "passed",
+        "strictTypeScript": "passed",
+        "unitAndServerTestsPassed": 27,
+        "browserTestsPassed": 18,
+        "productionBuild": "passed",
+        "verifiedAt": "2026-09-11T02:47:25.701Z",
+        "hostedMainBundle": "main-GT7BH27L.js",
+        "hostedBundleMatchesLocalBuild": true,
+        "frontendCredentialScan": "absent",
+        "designTokensAndHover": "passed",
+        "fontLoaded": true,
+        "liveCreation": {
+          "status": "passed",
+          "via": "deployed UI with reviewer link",
+          "durationSeconds": 36.4,
+          "width": 1024,
+          "height": 1024,
+          "requests": 1
+        },
+        "favoritesRestored": true,
+        "activeImageDeletionReturnsToStart": true
+      }
+    }
+  ]
+}
