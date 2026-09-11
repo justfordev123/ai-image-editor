@@ -1,5 +1,7 @@
 # Image Studio
 
+**[Open the live demo](https://ai-image-editor-silk.vercel.app/)** — Vercel sign-in or a separately shared reviewer link is required.
+
 A small Angular image editor for the frontend assessment. Angular Material owns the controls; TUI Image Editor **3.15.0** owns the canvas. A single server endpoint connects to Azure OpenAI **gpt-image-2**, keeping the API key out of the browser.
 
 **Demo status:** deployed to Vercel on September 11, 2026, from this checkout. Source is available in the [public GitHub repository](https://github.com/justfordev123/ai-image-editor). Azure provides image creation and editing, and the supplied brand fonts are bundled locally. Deployment and verification details are recorded below.
